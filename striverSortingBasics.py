@@ -60,5 +60,78 @@ def insertionSort(array):
     return array
 
 
+#4 quick sort
+class QuickSort():        
+    def partition(self,array,low,high):
+
+        pivot=array[low]
+        i=low
+        j=high
+        while i<j:
+            while array[i]<=pivot and i<high:
+                i+=1
+
+            while array[j]>pivot and j>low:
+                j-=1
+            
+            if i<j:
+                array[i],array[j]=array[j],array[i]
+
+        array[j],array[low]=array[low],array[j]
+        return j
+
+
+    def quickSort(self,array,low,high):
+        if low>=high:
+            return 
+        partitionIndex=self.partition(array,low,high)
+        self.quickSort(array,low,partitionIndex-1)
+        self.quickSort(array,partitionIndex+1,high)
+
+
+
+#5 Merge Sort
+
+
+def merge(array,low,mid,high):
+    temp=[]
+    left=low
+    right=mid+1
+    while left<=mid and right<=high:
+        if array[left]<=array[right]:
+            temp.append(array[left])
+            left+=1
+        else:
+            temp.append(array[right])
+            right+=1
+
+    while left<=mid:
+        temp.append(array[left])
+        left+=1
+    
+    while right<=high:
+        temp.append(array[left])
+        right+=1
+
+    i=low
+    while i <=high:
+        array[i]=temp[i-low]
+        i+=1
+    
+def mergeSort(array,low,high):
+    if low>=high:
+        return
+    mid=(low+high)//2
+    mergeSort(array,low,mid)
+    mergeSort(array,mid+1,high)
+    merge(array,low,mid,high)
+    
+
+
+
+
+
+
+
 
 
