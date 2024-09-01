@@ -71,6 +71,28 @@ def bestTimetoBuyandSellStock(array):
         i+=1
 
     print(max_profit)
+
+
+
+def rearrangeArray(nums) :
+        positive=[]
+        negative=[]
+        for i in nums :
+            if i>=0:
+                positive.append(i)
+            else:
+                negative.append(i)
+        result=[]
+        i=0
+        pos=0
+        while i<len(nums):
+            if i%2==0:
+                result.append(positive[pos])
+            else:
+                result.append(negative[pos])
+                pos+=1
+            i+=1
+        return result
             
 
 
