@@ -1,5 +1,4 @@
 def twoSum(array,target):
-    temporay_array=list(array)
     array.sort()
     left=0
     right=len(array)-1
@@ -93,10 +92,74 @@ def rearrangeArray(nums) :
                 pos+=1
             i+=1
         return result
+
+
+
+def nextPermutation(array):
+    index=-1
+    i=len(array)-2
+    while i>=0:
+        if array[i]<array[i+1]:
+            index=i
+            break
+        i-=1
+    if index==-1:
+        array.reverse()
+        return array
+    j=len(array)-1
+    while j>index:
+        if array[j]>array[index]:
+            array[j],array[index]=array[index],array[j]
+            array[index+1:] = list(reversed(array[index+1:]))
+
+            return array
+        j-=1
+
+
+
+def leadersInAnArray(array):
+    n=len(array)-1
+    maximum=array[n]
+    result=[maximum]
+    while n-1>=0:
+        if array[n-1]>=maximum:
+            result.append(array[n-1])
+            maximum=array[n-1]
+        n-=1
+    return result
+
+
+def longestConsecutive(nums) :
+        
+        if len(nums)==1:
+            return 1
+        if len(nums)==0:
+            return 0
+
+        nums.sort()
+        maximum_count=1
+        last_smallest=-float("inf")
+        count=0
+        for i in nums:
+            if i==last_smallest:
+                continue
+            elif i-1==last_smallest:
+                last_smallest=i
+                count+=1
+                maximum_count=max(count,maximum_count)
+            else:
+                last_smallest=i
+                count=1
+
+        return maximum_count
+
+
+
+
             
 
 
 
 
-array=[3,2,6,5,0,3]
-bestTimetoBuyandSellStock(array)
+array=[4, 7, 1, 0]
+print(leadersInAnArray(array))
