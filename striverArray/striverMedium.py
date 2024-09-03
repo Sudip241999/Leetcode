@@ -156,10 +156,62 @@ def longestConsecutive(nums) :
 
 
 
+def setMatrixZero(array):
+    row=[]
+    columns=[]
+    i=0
+    while i<len(array):
+        j=0
+        while j<len(array[0]):
+            if array[i][j]==0:
+                row.append(i)
+                columns.append(j)
+            j+=1
+        i+=1
+    for i in row:
+        j=0
+        while j<len(array[0]):
+            array[i][j]=0
+            j+=1
+    for i in columns:
+        j=0
+        while j<len(array):
+            array[j][i]=0
+            j+=1
+    return array
+
+
+
+
+def rotateImage(array):
+
+    #transpose the matrix
+    i=0
+    while i < len(array):
+        j=i
+        while j<len(array):
+            array[i][j],array[j][i]=array[j][i],array[i][j]
+            j+=1
+        i+=1
+
+    #reversing each row
+    for i in array:
+        i.reverse()
+    return array
+    
+    
+
+
+
+
+
             
 
 
 
 
-array=[4, 7, 1, 0]
-print(leadersInAnArray(array))
+array=[[1,2,3],[4,5,6],[7,8,9]]
+for i in array:
+    print(i)
+print("\n\n\n")
+rotateImage(array)
