@@ -198,6 +198,40 @@ def rotateImage(array):
     for i in array:
         i.reverse()
     return array
+
+def spiralmatrix(matrix):
+    result=[]
+    left=0
+    top=0
+    right=len(matrix[0])-1
+    bottom=len(matrix)-1
+    while left<right and top<=bottom:
+        i=left
+        while i<=right:
+            result.append(matrix[top][i])
+            i+=1
+        top+=1
+        i=top
+        while i<=bottom:
+            result.append(matrix[i][right])
+            i+=1
+        right-=1
+        if (top <= bottom):
+            i=right
+            while i>=left:
+                result.append(matrix[bottom][i])
+                i-=1
+            bottom-=1
+        i=bottom
+        if (left <= right):
+            while i>=top:
+                result.append(matrix[i][left])
+                i-=1
+            left+=1
+    print(result)
+
+
+        
     
     
 
@@ -210,8 +244,6 @@ def rotateImage(array):
 
 
 
-array=[[1,2,3],[4,5,6],[7,8,9]]
-for i in array:
-    print(i)
-print("\n\n\n")
-rotateImage(array)
+array=[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+
+spiralmatrix(array)
