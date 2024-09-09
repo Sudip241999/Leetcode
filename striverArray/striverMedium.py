@@ -231,6 +231,28 @@ def spiralmatrix(matrix):
     print(result)
 
 
+
+def countSubarraysWithGivenSum(array,k):
+    prefixSum=0
+    mpp={}
+    count=0
+    mpp[0]=1
+    for i in array:
+        prefixSum+=i
+        remove=prefixSum-k
+        if remove in mpp:
+            
+            count+=mpp[remove]
+        if prefixSum in mpp:
+            mpp[prefixSum]+=1
+        else:
+            mpp[prefixSum]=1
+    return count
+
+
+
+
+
         
     
     
