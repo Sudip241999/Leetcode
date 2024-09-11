@@ -37,8 +37,104 @@ class PascalTriangle:
 
         print(final)
 
-     
-ob=PascalTriangle()
-print(ob.nCr(2,2))
-ob.pascalTriangle(4)
+
+class FourSum():
+    def fourSum(self, nums, target):
+        
+        nums.sort()
+        result=[]
+        i=0
+        while i<len(nums)-3:
+            
+            j=i+1
+            while j<len(nums)-2:
+               
+                left = j+1
+                right=len(nums)-1
+                while left<right:
+                    s=nums[i]+nums[j]+nums[left]+nums[right]
+                    if s==target:
+                        if [nums[i],nums[j],nums[left],nums[right]] not in result:
+                            result.append([nums[i],nums[j],nums[left],nums[right]])
+                        left+=1
+                        right-=1
+
+                    elif s<target:
+                        left+=1
+                    else:
+                        right-=1
+                j+=1
+            i+=1
+        return result
+    
+
+class ThreeSum():
+    def threeSum(self, nums):
+        result=[]
+        nums.sort()
+        i=0
+        while i<len(nums)-2:
+            if i != 0 and nums[i] == nums[i - 1]:
+                i+=1
+                continue
+            left=i+1
+            right=len(nums)-1
+            target=0-nums[i]
+            
+            while left<right:
+                if nums[left]+nums[right]==target:
+
+                    if [nums[i],nums[left],nums[right]] not in result:
+                    
+                   
+                        result.append([nums[i],nums[left],nums[right]])
+                    
+                    
+                    left+=1
+                    right-=1
+
+                    while left<right and nums[left]==nums[left-1]:
+                        left+=1
+                    while right>left and nums[right]==nums[right+1]:
+                        right-=1
+                    
+                elif nums[left]+nums[right]<target:
+                    left+=1
+                else:
+                    right-=1
+            i+=1
+
+        return result
+
+
+
+def largestSubarrayWithZeroSum(array):
+    mpp={}
+    sum=0
+    max_count=0
+    i=0
+    while i<len(array):
+        sum+=array[i]
+        if sum==0:
+            max_count=max(max_count,i+1)
+        if sum in mpp:
+            count=i-mpp[sum]
+            max_count=max(max_count,count)
+
+        else:
+            mpp[sum]=i
+
+        i+=1
+    return max_count
+
+   
+
+
+
+
+
+        
+        
+
+ 
           
