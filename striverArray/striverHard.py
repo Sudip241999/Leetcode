@@ -1,3 +1,4 @@
+from collections import defaultdict
 def majorityElement(nums) :
         d={}
         for i in nums:
@@ -128,6 +129,48 @@ def largestSubarrayWithZeroSum(array):
     return max_count
 
    
+
+
+def subarrayWithGivenXOR(A : list,B : int) -> int :
+    
+    count=0
+    xR=0
+    d=defaultdict(int)
+    d[xR]=1
+    for i in A:
+        xR=xR^i
+        x=xR^B
+        count+=d[x]
+        d[xR]+=1
+            
+    return count
+
+
+def mergeIntervals( intervals: list[list[int]]) -> list[list[int]]:
+        intervals.sort()
+        j=0
+        result=[intervals[0]]
+        for i in range(1,len(intervals)):
+            if result[j][1]>=intervals[i][0] and result[j][1]<=intervals[i][1] :
+                result[j][1]=intervals[i][1]
+            elif result[j][1]>=intervals[i][0] and result[j][1]>=intervals[i][1]:
+                continue
+            else:
+                result.append(intervals[i])
+                j+=1
+            
+        return result
+
+
+
+def mergeTwoSortedArraysWithoutExtraSpace(nums1,m,nums2,n):
+    i=m
+    j=0
+    while i<m+n:
+        nums1[i]=nums2[j]
+        j+=1
+        i+=1
+    nums1.sort()
 
 
 
