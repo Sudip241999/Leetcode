@@ -172,6 +172,25 @@ def mergeTwoSortedArraysWithoutExtraSpace(nums1,m,nums2,n):
         i+=1
     nums1.sort()
 
+# find repeating and missing element 
+class Solution:
+    def findTwoElement( self,arr): 
+        # code here
+        n=len(arr)
+        Sn=(n*(n+1))//2
+        S2n=(n*(n+1)*(2*n+1))//6
+        S=0
+        S2=0
+        for i in range(n):
+            S+=arr[i]
+            S2+=arr[i]**2
+        val1=S-Sn
+        # print(val1)
+        val2=(S2-S2n)//val1
+        x=(val1+val2)//2
+        y=val2-x
+        return x,y
+
 
 
 
