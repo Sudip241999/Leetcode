@@ -110,7 +110,7 @@ def merge(array,low,mid,high):
         left+=1
     
     while right<=high:
-        temp.append(array[left])
+        temp.append(array[right])
         right+=1
 
     i=low
@@ -125,6 +125,10 @@ def mergeSort(array,low,high):
     mergeSort(array,low,mid)
     mergeSort(array,mid+1,high)
     merge(array,low,mid,high)
+
+arr=[5,4,3,2,1]
+mergeSort(arr,0,4)
+print(arr)
     
 
 
