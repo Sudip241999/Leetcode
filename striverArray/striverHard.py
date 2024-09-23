@@ -291,16 +291,34 @@ def mergeSort(arr, low, high):
 def team(skill: [int], n: int) -> int:
     return mergeSort(skill, 0, n - 1)
 
-if __name__ == "__main__":
-    a = [4, 1, 2, 3, 1]
-    n = 5
-    cnt = team(a, n)
-    print("The number of reverse pair is:", cnt)
 
 
 
 
 
+
+def maxProduct(nums: List[int]) -> int:
+    prefix=1
+    suffix=1
+    maximum=-float("inf")
+    j=len(nums)
+    i=0
+    while i<len(nums):
+        if prefix==0:
+            prefix=1
+            
+        if suffix==0:
+            suffix=1    
+        prefix*=nums[i]
+        suffix*=nums[j-i-1]
+        maximum=max(maximum,prefix,suffix)
+
+        i+=1
+        
+    return maximum
+
+arr=[2,3,-2,4]
+print(maxProduct(arr))
 
 
 
